@@ -20,6 +20,18 @@ void printPlayer(Player *p){ // värdet av p är 1000
     //p->Jersey = 99;
 }
 
+void createPlayer(Player *p){ // värdet av p är 1000
+    printf("*** CREATE PLAYER ***\n");
+    printf("Name:");
+    scanf(" %s",p->Name);
+    printf("Age:");
+    scanf(" %d",&p->Age);
+    printf("Jersey:");
+    scanf(" %d", &p->Jersey);
+    //p->Jersey = 99;
+}
+
+
 int main() { 
     // int a[3];  // a = 1000   -> a[0]  1000, a[1] 1004, a[2] 1008, a[3] 1012, a[4] 1016 
     // a[0] = 12;
@@ -41,16 +53,24 @@ int main() {
     // Player patrik = {55,14,"Patrik Sundström"};
     // printf("%s\n", patrik.Name);
  
+  Player allPlayers[5];
+  int playerCount = 0;
 
 
     while(true){
         showMenu();
         int selection = getMenuInput(1,4);
         if(selection == 1){
-            //createPlayer();
+            // SKapa en ny player
+            // stoppa in i arrayen
+            //if(playerCount < 5)
+            createPlayer(&allPlayers[playerCount]);
+            playerCount++;
         }
         if(selection == 3){
-            //printAllPlayers();
+            for(int i = 0; i < playerCount; i++){
+                printPlayer(&allPlayers[i]);
+            }
         }
         if(selection == 4){
             break;
