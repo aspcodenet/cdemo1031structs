@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <stdlib.h>
+
 #include "inputhelpers.h"
 
 typedef struct {
@@ -52,8 +54,11 @@ int main() {
 
     // Player patrik = {55,14,"Patrik Sundström"};
     // printf("%s\n", patrik.Name);
- 
-  Player allPlayers[5];
+  Player *dynamicAllPlayers = NULL; // 20056
+//   dynamicAllPlayers = malloc( sizeof(Player) * 1 );
+//   createPlayer(&dynamicAllPlayers[0]);
+//   free(dynamicAllPlayers);  
+//   Player allPlayers[5]; // 1000
   int playerCount = 0;
 
 
@@ -64,18 +69,24 @@ int main() {
             // SKapa en ny player
             // stoppa in i arrayen
             //if(playerCount < 5)
-            createPlayer(&allPlayers[playerCount]);
+            if(dynamicAllPlayers == NULL){
+                dynamicAllPlayers = malloc( sizeof(Player) * 1 );
+            }else{
+                int currentSize = playerCount * sizeof(Player);
+                dynamicAllPlayers = realloc(dynamicAllPlayers,currentSize + sizeof(Player));
+            }
+            createPlayer(&dynamicAllPlayers[playerCount]);
             playerCount++;
         }
         if(selection == 3){
             for(int i = 0; i < playerCount; i++){
-                printPlayer(&allPlayers[i]);
+                printPlayer(&dynamicAllPlayers[i]);
             }
         }
         if(selection == 4){
             break;
         }       
-    }  
+    }
     return 0; // japp
 }
 
