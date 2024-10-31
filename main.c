@@ -33,8 +33,30 @@ void createPlayer(Player *p){ // värdet av p är 1000
     //p->Jersey = 99;
 }
 
+/*Skapa ett program där användaren får upp fyra frågor om att mata in ett tal. 
+
+Spara alla talen i en array. Loopa igenom arrayen och ta fram det tal som är störst. Skriv tillbaka resultatet på skärmen för användaren */
+void lab1(){
+    int talen[4];
+    for(int i = 0; i < 4;i++){
+        printf("Ange tal nummer %d:",i+1);
+        // int current;
+        // scanf(" %d", &current);
+        // talen[i] = current;
+        scanf(" %d", &talen[i]);
+    }
+    int largestSoFar = talen[0];
+    for(int i = 0; i < 4; i++){
+        if( talen[i] > largestSoFar ){
+            largestSoFar = talen[i];
+        }
+    }
+    printf("Largest:%d\n", largestSoFar);
+}
+
 
 int main() { 
+    lab1();
     // int a[3];  // a = 1000   -> a[0]  1000, a[1] 1004, a[2] 1008, a[3] 1012, a[4] 1016 
     // a[0] = 12;
     // a[1] = 13;
