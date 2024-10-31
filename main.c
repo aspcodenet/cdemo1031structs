@@ -21,6 +21,15 @@ void printPlayer(Player *p){ // värdet av p är 1000
 }
 
 int main() { 
+    int a[3];  // a = 1000   -> a[0]  1000, a[1] 1004, a[2] 1008, a[3] 1012, a[4] 1016 
+    a[0] = 12;
+    a[1] = 13;
+    a[2] = 15;
+    // a[2]  a = 1000 + 4 * 2
+
+    a[4] = 123; // a[] - C gör om till en minnesaddress
+    a[-99] = 12;
+
     Player foppa; // foppa är paxad på STACKENB på address 1000 -> 1264
     foppa.Age = 52;
     foppa.Jersey = 21;
