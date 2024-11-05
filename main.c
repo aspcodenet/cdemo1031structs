@@ -2,121 +2,134 @@
 #include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #include "inputhelpers.h"
 
-typedef struct {
-    int Age;
-    int Jersey;
-    char Name[256];
-}Player;
 
-void showMenu();
-
-// PEKARE av två anledningar
-// 1. möjliggöra ändring i en parameter (copy by value)
-// 2. prestandaskäl 4 bytes för pekaren istf hela objektet är kopierat
-void printPlayer(Player *p){ // värdet av p är 1000
-    printf("*** INFO ABOUT PLAYER ***\n");
-    printf("%d, %s\n", p->Jersey, p->Name);
-    //p->Jersey = 99;
+void mystrcpy(char *dest, char *source){
+    for(int i = 0; i <= strlen(source);i++){
+        char ch = source[i];
+        dest[i] = ch;
+    }a
 }
-
-void createPlayer(Player *p){ // värdet av p är 1000
-    printf("*** CREATE PLAYER ***\n");
-    printf("Name:");
-    scanf(" %s",p->Name);
-    printf("Age:");
-    scanf(" %d",&p->Age);
-    printf("Jersey:");
-    scanf(" %d", &p->Jersey);
-    //p->Jersey = 99;
-}
-
-/*Skapa ett program där användaren får upp fyra frågor om att mata in ett tal. 
-
-Spara alla talen i en array. Loopa igenom arrayen och ta fram det tal som är störst. Skriv tillbaka resultatet på skärmen för användaren */
-void lab1(){
-    int talen[4];
-    for(int i = 0; i < 4;i++){
-        printf("Ange tal nummer %d:",i+1);
-        // int current;
-        // scanf(" %d", &current);
-        // talen[i] = current;
-        scanf(" %d", &talen[i]);
+int main() {
+    char input2[] = "stefan";
+    // STEFAN
+    for(int i = 0; i < strlen(input2);i++){
+        input2[i] = toupper(input2[i]);
     }
-    int largestSoFar = talen[0];
-    for(int i = 0; i < 4; i++){
-        if( talen[i] > largestSoFar ){
-            largestSoFar = talen[i];
-        }
+    // vill du fportsätta J/N
+    // j
+    char input[] = "j";
+    input[0] = toupper(input[0]) ;
+    //
+    if(input[0] == 'J'){
+
     }
-    printf("Largest:%d\n", largestSoFar);
-}
+
+    char number[] = "123";
+    int n = atoi(number);
+    float f = atof("122.234");
 
 
-int main() { 
-    lab1();
-    // int a[3];  // a = 1000   -> a[0]  1000, a[1] 1004, a[2] 1008, a[3] 1012, a[4] 1016 
-    // a[0] = 12;
-    // a[1] = 13;
-    // a[2] = 15;
-    // // a[2]  a = 1000 + 4 * 2
+    printf("Hej %n %f",n,f);
+    
+    int year=1972;
+    int month=8;
+    int day=3;
+    char datum[10];
+    // 1972-8-3
+    sprintf(datum,"%d-%02d-%02d",year,month,day);
 
-    // a[4] = 123; // a[] - C gör om till en minnesaddress
-    // a[-99] = 12;
 
-    // Player foppa; // foppa är paxad på STACKENB på address 1000 -> 1264
-    // foppa.Age = 52;
-    // foppa.Jersey = 21;
-    // strcpy(foppa.Name, "Peter Forsberg");
-    // printPlayer(&foppa); // Det är 1000 som skickas in
-    // // //foppa.Name = "Peter Forsberg";
-    // printf("%s\n", foppa.Name);
 
-    // Player patrik = {55,14,"Patrik Sundström"};
-    // printf("%s\n", patrik.Name);
-  Player *dynamicAllPlayers = NULL; // 20056
-//   dynamicAllPlayers = malloc( sizeof(Player) * 1 );
-//   createPlayer(&dynamicAllPlayers[0]);
-//   free(dynamicAllPlayers);  
-//   Player allPlayers[5]; // 1000
-  int playerCount = 0;
+    // emil =
+    char email[] = "hej@gmail.com"; // scanfar in ett email
+    // Finns det en @
+    //char *found2 = strrchr(email, '.');
+    char *found2 = strchr(email, 'w');
+    if(found2 == NULL){
+
+    }
+    // email = 1000
+    // found2 är address 1003
+    int position = found2 - email;
+    if(position == 0){
+        printf("Din epost får inte börja med @");
+    }
+ 
+    char *found = strchr(email, '@');
+    if(found != NULL){
+        // @ finns !!!
+    }
+    printf("%s", found); // @gmail.com
+
+    char str1[30] = "C programming";
+    // str1 = str1 + " is fun";
+    strcat(str1, " is fun");
+    strcat(str1, " tycker alla som är nerds! dwhjhjhdsahjds");
+    printf("%s\n", str1);
+
+    char str2[20];
+    //str1 for(int )= str2;
+    mystrcpy(str2, str1);
+
+
+
+    int i;
+    scanf(" %d", &i);
+    char str[50];
+    scanf(" %s", str);
+
+
+    char test[] = "hejsan";
+    char *test2 = "hejsan";
+    printf("%s", test);
+    printf("%s", test2);
+    test[0] = 'A';
+    test2[0] = 'A';
+    printf("%s", test); //Aejsan
+    printf("%s", test2); // Aejsan
+      
+ 
+
+    char yourname[30];
+    scanf(" %s", yourname);
+    printf("Namn:%s \n", yourname);
+    //strcmp(yourname,"Stefan") ger oss tre svar
+    // 0 STRÄNGARNA ÄR LIKA
+    // -1 om yourname ska komma före "Stefan"
+    // +1 om "Stefan" ska komma före yourname
+    if(strcmp(yourname,"Stefan") == 0){
+        printf("Oj vilket fint namn");
+    }
+    // if(!strcmp(yourname,"Stefan")){
+    //     printf("Oj vilket fint namn");
+    // }
+
+    char namn[]="Stefan"; // längd 6, allokerat 7
+    printf("%ld", namn);
+    if(namn == "Stefan"){
+        printf("Oj vilket fint namn");
+    }
+
+
+    //char *namn3 = "Stefan";
+    char namn2[10] = "Stefan";// längd 6, allokerat 10
+ //   char namn3[10] = "StefanHolmberg";// längd 14, allokerat 10
+    int length = strlen(namn2);
+    if(namn2[0] == 'S'){
+        printf("Fint ditt namn börjar på bokstaven S");
+    }
+    // String s = "Stefan";
+    // String s2 = s;
+    // s = s + " Holmberg";
 
 
     while(true){
-        showMenu();
-        int selection = getMenuInput(1,4);
-        if(selection == 1){
-            // SKapa en ny player
-            // stoppa in i arrayen
-            //if(playerCount < 5)
-            if(dynamicAllPlayers == NULL){
-                dynamicAllPlayers = malloc( sizeof(Player) * 1 );
-            }else{
-                int currentSize = playerCount * sizeof(Player);
-                dynamicAllPlayers = realloc(dynamicAllPlayers,currentSize + sizeof(Player));
-            }
-            createPlayer(&dynamicAllPlayers[playerCount]);
-            playerCount++;
-        }
-        if(selection == 3){
-            for(int i = 0; i < playerCount; i++){
-                printPlayer(&dynamicAllPlayers[i]);
-            }
-        }
-        if(selection == 4){
-            break;
-        }       
     }
     return 0; // japp
 }
 
-
-void showMenu(){ // DEFINITION av en funktion
-    printf("1. Skapa ny player\n");
-    printf("2. Uppdatera player\n");
-    printf("3. Lista alla players\n");
-    printf("4. Exit\n");
-}
 
