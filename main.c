@@ -11,9 +11,21 @@ void mystrcpy(char *dest, char *source){
     for(int i = 0; i <= strlen(source);i++){
         char ch = source[i];
         dest[i] = ch;
-    }a
+    }
 }
+
+int test(){
+    int a = 12;
+    printf("%d\n",a);
+    return a*12;
+}
+
 int main() {
+    int aaa;
+    printf("Start");
+    aaa = test();
+    printf("%d\n",aaa);
+
     char input2[] = "stefan";
     // STEFAN
     for(int i = 0; i < strlen(input2);i++){
@@ -33,7 +45,7 @@ int main() {
     float f = atof("122.234");
 
 
-    printf("Hej %n %f",n,f);
+    printf("Hej %d %f",n,f);
     
     int year=1972;
     int month=8;
@@ -65,15 +77,15 @@ int main() {
     }
     printf("%s", found); // @gmail.com
 
-    char str1[30] = "C programming";
-    // str1 = str1 + " is fun";
-    strcat(str1, " is fun");
-    strcat(str1, " tycker alla som är nerds! dwhjhjhdsahjds");
-    printf("%s\n", str1);
+    // char str1[30] = "C programming";
+    // // str1 = str1 + " is fun";
+    // strcat(str1, " is fun");
+    // strcat(str1, " tycker alla som är nerds! dwhjhjhdsahjds");
+    // printf("%s\n", str1);
 
-    char str2[20];
-    //str1 for(int )= str2;
-    mystrcpy(str2, str1);
+    // char str2[20];
+    // //str1 for(int )= str2;
+    // mystrcpy(str2, str1);
 
 
 
@@ -108,17 +120,17 @@ int main() {
     //     printf("Oj vilket fint namn");
     // }
 
-    char namn[]="Stefan"; // längd 6, allokerat 7
-    printf("%ld", namn);
-    if(namn == "Stefan"){
-        printf("Oj vilket fint namn");
-    }
+    // char namn[]="Stefan"; // längd 6, allokerat 7
+    // printf("%ld", namn);
+    // if(namn == "Stefan"){
+    //     printf("Oj vilket fint namn");
+    // }
 
 
     //char *namn3 = "Stefan";
     char namn2[10] = "Stefan";// längd 6, allokerat 10
  //   char namn3[10] = "StefanHolmberg";// längd 14, allokerat 10
-    int length = strlen(namn2);
+    //int length = strlen(namn2);
     if(namn2[0] == 'S'){
         printf("Fint ditt namn börjar på bokstaven S");
     }
